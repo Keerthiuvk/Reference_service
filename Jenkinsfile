@@ -16,7 +16,7 @@ pipeline {
                     
                     // Run the Python script
                     checkout scm
-                    sh 'python replace.py'
+                    sh 'python3 replace.py'
                 }
             }
         }
