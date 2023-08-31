@@ -15,7 +15,7 @@ pipeline {
                     env.TAG_PARAM = "new_tag"
                     
                     // Run the Python script
-                    
+                    checkout scm
                     sh 'python replace.py'
                 }
             }
