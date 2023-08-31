@@ -15,7 +15,8 @@ pipeline {
                     env.TAG_PARAM = "new_tag"
                     
                     // Run the Python script
-                    sh 'replace.py'
+                    
+                    sh 'python replace.py'
                 }
             }
         }
