@@ -1,0 +1,90 @@
+# Default values for Maven projects.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+env: ''
+globalconfigmap: nsl
+profile_config: profile
+otel_config: java-otel-config
+trafficip: 192.168.0.169/32
+redis_config: redis-config
+apm_config: apm-config
+neptune_db: db-config
+iam_config: ''
+dbsecret: ''
+kafka_config: kafka-config
+appsecret: keycloak-secret
+deadlineSeconds: 600
+replicaCount: ''
+
+probePath: ''
+#probePath: /nsl-iam/swagger-ui.html
+image:
+  repository: awsppp
+  tag: new
+  pullPolicy: IfNotPresent
+  secret: recr
+  name: nsl-bookstore
+serviceaccount:
+  name: nsl-bookstore
+rolebinding: cluster-admin
+
+role:
+  name: nsl-bookstore
+management:
+  externalPort: 9999
+  internalPort: 9999
+  portName: management
+service:
+  name: nsl-bookstore
+  type: ClusterIP
+  externalPort: 9090
+  internalPort: 9090
+  portName: nsl-iam
+resources:
+  limits:
+    memory: 4096Mi
+  requests:
+    cpu: 500m
+    memory: 2048Mi
+gateways:
+  gateway: gateway2
+  prefix: /nsl-iam
+  internalPort: 9090
+  weightvalue: 100
+exemplar:
+  enabled: true
+  path: /actuator/exemplars
+  port: 9999
+jvmmetrics:
+  enabled: true
+  path: /actuator/prometheus
+  port: 9999
+livenessProbe:
+  port: 9999
+  initialDelaySeconds: 600
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 10
+readinessProbe:
+  port: 9999
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 70
+terminationGracePeriodSeconds: 10
+efs:
+  volume:
+    name: nsl-bookstore
+otel:
+  otel_image: public.ecr.aws/nslhub/otel-javaagent
+  otel_version: latest
+volume:
+  mountpath1: /tmp
+  name1: tmp
+  nameJacoco: jacoco-volume
+  typeJacoco: DirectoryOrCreate
+  pathJacoco: /sonarqube
+  mountpathJacoco: /home/nsluser/sonar
+  mountpath2: /home/nsluser/logs
+  name2: logs
+dump:
+  enabled: 'false'

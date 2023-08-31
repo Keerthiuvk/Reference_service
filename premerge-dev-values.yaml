@@ -1,0 +1,25 @@
+env: premerge-dev
+propertyFileName: premerge-dev
+globalconfigmap: nsl
+profile_config: profile
+globalsecret: ''
+resources:
+  limits:
+    cpu: 4000m
+    memory: 8192Mi
+  requests:
+    cpu: 1000m
+    memory: 2048Mi
+node:
+  name: nsl-bookstore
+  operator: In
+nodegroup:
+  labels: ''
+gateways:
+  gateway: gateway12
+image:
+  repository: awsppp
+  tag: new
+  pullPolicy: Always
+  secret: recr
+  name: nsl-bookstore

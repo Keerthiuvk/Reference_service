@@ -1,0 +1,28 @@
+env: hotfix
+propertyFileName: hotfix
+globalconfigmap: nsl
+profile_config: profile
+globalsecret: ''
+replicaCount: 2
+resources:
+  limits:
+    cpu: 1000m
+    memory: 4096Mi
+  requests:
+    cpu: 500m
+    memory: 2048Mi
+node:
+  name: nsl-bookstore
+  operator: In
+nodegroup:
+  labels: ''
+gateways:
+  gateway: gateway3
+image:
+  repository: awsppp
+  tag: new
+  pullPolicy: IfNotPresent
+  secret: recr
+  name: nsl-bookstore
+serviceaccount:
+  name: nsl-bookstore

@@ -1,0 +1,26 @@
+env: dev3
+OIDC: arn:aws:iam::660124699787:role/access-to-pods-for-resouces-role
+propertyFileName: dev
+globalconfigmap: nsl
+profile_config: profile
+globalsecret: ''
+resources:
+  limits:
+    cpu: 1000m
+    memory: 4096Mi
+  requests:
+    cpu: 500m
+    memory: 2048Mi
+node:
+  name: nsl-bookstore
+  operator: In
+nodegroup:
+  labels: ''
+gateways:
+  gateway: gateway
+image:
+  repository: awsppp
+  tag: new
+  pullPolicy: IfNotPresent
+  secret: recr
+  name: nsl-bookstore

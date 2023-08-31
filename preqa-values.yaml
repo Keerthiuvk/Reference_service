@@ -1,0 +1,32 @@
+env: preqa
+OIDC: arn:aws:iam::285672126725:role/access-to-pods-for-resouces-role-qa3
+propertyFileName: preqa
+globalconfigmap: nsl
+profile_config: profile
+globalsecret: ''
+minreplicas: 2
+maxreplicas: 4
+avgmem: 60
+avgcpu: 60
+request_per_second: 625
+resources:
+  limits:
+    memory: 16Gi
+  requests:
+    cpu: 2000m
+    memory: 8Gi
+node:
+  name: nsl-bookstore
+  operator: In
+nodegroup:
+  labels: ''
+gateways:
+  gateway: gateway
+image:
+  repository: awsppp
+  tag: new
+  pullPolicy: IfNotPresent
+  secret: recr
+  name: nsl-bookstore
+dump:
+  enabled: 'false'

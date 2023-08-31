@@ -1,0 +1,7 @@
+apiVersion: v2
+appVersion: 1.1.1
+description: A Helm chart for nsl-iam on k8s
+icon: 
+  https://raw.githubusercontent.com/jenkins-x/jenkins-x-platform/master/images/java.png
+name: ''
+version: 1.1.1

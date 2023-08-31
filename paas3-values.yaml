@@ -1,0 +1,27 @@
+env: paas3
+OIDC: arn:aws:iam::660124699787:role/access-to-pods-for-resouces-role
+propertyFileName: paas3
+globalconfigmap: nsl
+profile_config: profile
+globalsecret: ''
+replicaCount: 1
+resources:
+  limits:
+    cpu: 2000m
+    memory: 6Gi
+  requests:
+    cpu: 1000m
+    memory: 2000Mi
+node:
+  name: nsl-bookstore
+  operator: In
+nodegroup:
+  labels: ''
+gateways:
+  gateway: gateway2
+image:
+  repository: awsppp
+  tag: new
+  pullPolicy: IfNotPresent
+  secret: recr
+  name: nsl-bookstore
